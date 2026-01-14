@@ -1,8 +1,10 @@
 #include <iostream>
 #include <cassert>
 #include <iostream>
+#include <string>
 #include "tokenizer.h"
 #include "passwords.h"
+#include "encryption.h"
 
 using namespace std;
 
@@ -46,7 +48,7 @@ void test_data_encryption(){
     bool encryptionWorks;
     string unencryptedString = "maryhadalittlelamb";
     string encryptionKey = "fleece";
-    string expectedEntcryption = "rlvcjeilpmvxqppeof"
+    string expectedEntcryption = "rlvcjeilpmvxqppeof";
 
     string testString = encryptString(encryptionKey, unencryptedString);
     assert(testString == expectedEntcryption);
