@@ -40,3 +40,16 @@ void test_password_composition(){
     assert(passwordIsLegal);
     cout << "passwordGeneration creates Passwords with legal lowercase characters" << endl;
 }
+
+void test_data_encryption(){
+
+    bool encryptionWorks;
+    string unencryptedString = "maryhadalittlelamb";
+    string encryptionKey = "fleece";
+    string expectedEntcryption = "rlvcjeilpmvxqppeof"
+
+    string testString = encryptString(encryptionKey, unencryptedString);
+    assert(testString == expectedEntcryption);
+
+}
+
