@@ -8,12 +8,18 @@
 
 using namespace std;
 
-std::string fileName = "testName.txt";
+string fileName = "testName.txt";
+string fileRaw = "testRaw.txt";
 
 void test_tokenization(){
-    std::vector<std::string> expected = {"Alex", "Mary"};
+    vector<string> expected = {"Alex", "Mary"};
     assert(tokenizeName(fileName) == expected);
-    std::cout << "Tokenizer is able to parse sample" << std::endl;
+    cout << "Tokenizer is able to parse sample" << endl;
+}
+void test_raw_tokenization(){
+    vector<string> expected = {"weather", "angle"};
+    assert(tokenizePasswords(fileRaw) == expected);
+    cout << "Tokenizer is able to parse passwords" << endl;
 }
 
 void test_password_length(){
