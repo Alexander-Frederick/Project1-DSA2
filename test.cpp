@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cassert>
-#include <iostream>
 #include <string>
 #include "tokenizer.h"
 #include "passwords.h"
@@ -16,6 +15,7 @@ void test_tokenization(){
     assert(tokenizeName(fileName) == expected);
     cout << "Tokenizer is able to parse sample" << endl;
 }
+
 void test_raw_tokenization(){
     vector<string> expected = {"weather", "angle"};
     assert(tokenizePasswords(fileRaw) == expected);
@@ -38,9 +38,9 @@ void test_password_composition(){
     bool passwordIsLegal = true;
     string password = passwordGeneration();
 
-    for(int i = 0; i < password.size(); i++){
+    for(int i = 0; i < (int)password.size(); i++){
         char charToTest = password[i];
-        if(charToTest >= 'a' && charToTest <= 'z'){
+        if(charToTest < 'a' || charToTest > 'z'){
             passwordIsLegal = false;
         }
     }
@@ -50,14 +50,24 @@ void test_password_composition(){
 }
 
 void test_data_encryption(){
-
-    bool encryptionWorks;
     string unencryptedString = "maryhadalittlelamb";
     string encryptionKey = "fleece";
-    string expectedEntcryption = "rlvcjeilpmvxqppeof";
+    string expectedEncryption = "rlvcjeilpmvxqppeof";
 
     string testString = encryptString(encryptionKey, unencryptedString);
-    assert(testString == expectedEntcryption);
-
+    assert(testString == expectedEncryption);
+    cout << "Encryption produces correct output" << endl;
 }
 
+int main(){
+    cout << "=== Running Tests ===" << endl << endl;
+    
+    test_tokenization();
+    test_raw_tokenization();
+    test_password_length();
+    test_password_composition();
+    test_data_encryption();
+    
+    cout << endl << "=== All Tests Passed! ===" << endl;
+    return 0;
+}

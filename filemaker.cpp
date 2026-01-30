@@ -27,7 +27,7 @@ void createEncryptedDataFile(string key, string rawName){
 }
 void formatFile(ofstream& outputFile, vector<string> names, vector<string> passwords){
 
-    for(int i = 0; i < names.size(); i++){
+    for(int i = 0; i < (int)names.size(); i++){
         outputFile << names[i] << " " << passwords[i] << endl;
     }
 }

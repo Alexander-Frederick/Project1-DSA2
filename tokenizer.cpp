@@ -11,7 +11,7 @@ vector<string> tokenizeName(string fileName){
     inputFile.open(fileName);
     if(!inputFile.is_open()){
         cout << "Error could not open file " << fileName << endl;
-        return;
+        return {};
     }
     vector<string> namesOutput;
     string data;
@@ -21,7 +21,7 @@ vector<string> tokenizeName(string fileName){
         extract >> name;
         namesOutput.push_back(name);
     }
-    
+
     inputFile.close();
     return namesOutput;
 }
@@ -30,7 +30,7 @@ vector<string> tokenizePasswords(string fileName){
     inputFile.open(fileName);
     if(!inputFile.is_open()){
         cout << "Error could not open file " << fileName << endl;
-        return;
+        return {};
     }
     
     vector<string> passwordsOutput;
