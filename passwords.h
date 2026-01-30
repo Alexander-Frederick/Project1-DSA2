@@ -1,5 +1,7 @@
 #ifndef PASSWORDS
 #define PASSWORDS
+#include <string>
+#include <vector>
 
 using namespace std;
 
