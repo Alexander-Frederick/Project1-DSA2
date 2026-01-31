@@ -1,4 +1,5 @@
 #include "passwords.h"
+#include <ctime>
 
 using namespace std;
 
@@ -7,6 +8,11 @@ const int ASCIIMIN = 'a';
 const int ASCIIMAX = 'z';
 
 vector<string> passwordGenerationSheet(int size){
+    static bool seeded = false;
+    if (!seeded) {
+        srand(time(0));
+        seeded = true;
+    }
     vector<string> passwords;
 
     for(int i = 0; i < size; i++){

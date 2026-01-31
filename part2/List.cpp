@@ -4,6 +4,14 @@
     List::List(){
         head = nullptr;
     }
+    List::~List(){
+        Node* current = head;
+        while(current != nullptr){
+            Node* temp = current;
+            current = current->getNext();
+            delete temp;
+        }
+    }
     void List::addNode(string userID, string encPass){
         Node* newNode = new Node(userID, encPass);
         if(head == nullptr){

@@ -12,6 +12,7 @@ private:
 
 public:
     List();
+    ~List();
     void addNode(string userID, string encPass);
     Node* findUser(string name);
 
