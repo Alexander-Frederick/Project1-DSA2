@@ -7,6 +7,7 @@ using namespace std;
 
 void createRawFile(string namesFile){
     ofstream rawFile ("rawdata.txt");
+    
     vector<string> names = tokenizeName(namesFile);
     vector<string> passwords = passwordGenerationSheet(names.size());
 

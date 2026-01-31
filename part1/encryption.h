@@ -1,3 +1,8 @@
+/**
+ * Encrypts strings based on Vigenere Cipher
+ *
+ * @author Alexander Frederick
+ */
 #ifndef ENCRYPTION
 #define ENCRYPTION
 #include <string>

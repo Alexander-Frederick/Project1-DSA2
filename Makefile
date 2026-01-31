@@ -1,9 +1,18 @@
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall -g -Ipart1 -Ipart2
 
-MAIN_OBJS = main.o part1/tokenizer.o part1/passwords.o part1/filemaker.o part1/encryption.o part2/Node.o part2/List.o part2/HashTable.o
+PART1_DIR = part1
+PART2_DIR = part2
 
-TEST_OBJS = part1/test.o part1/tokenizer.o part1/passwords.o part1/filemaker.o part1/encryption.o
+PART1_SRCS = $(PART1_DIR)/tokenizer.cpp $(PART1_DIR)/passwords.cpp \
+             $(PART1_DIR)/filemaker.cpp $(PART1_DIR)/encryption.cpp
+PART2_SRCS = $(PART2_DIR)/Node.cpp $(PART2_DIR)/List.cpp $(PART2_DIR)/HashTable.cpp
+
+PART1_OBJS = $(PART1_SRCS:.cpp=.o)
+PART2_OBJS = $(PART2_SRCS:.cpp=.o)
+
+MAIN_OBJS = main.o $(PART1_OBJS) $(PART2_OBJS)
+TEST_OBJS = $(PART1_DIR)/test.o $(PART1_OBJS)
 
 MAIN_TARGET = main
 TEST_TARGET = test
@@ -11,40 +20,23 @@ TEST_TARGET = test
 all: $(MAIN_TARGET) $(TEST_TARGET)
 
 $(MAIN_TARGET): $(MAIN_OBJS)
-	$(CXX) $(CXXFLAGS) -o $(MAIN_TARGET) $(MAIN_OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
 $(TEST_TARGET): $(TEST_OBJS)
-	$(CXX) $(CXXFLAGS) -o $(TEST_TARGET) $(TEST_OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
-main.o: main.cpp part1/tokenizer.h part1/passwords.h part1/filemaker.h part1/encryption.h part2/HashTable.h
-	$(CXX) $(CXXFLAGS) -c main.cpp
+main.o: main.cpp $(PART1_DIR)/tokenizer.h $(PART1_DIR)/passwords.h \
+        $(PART1_DIR)/filemaker.h $(PART1_DIR)/encryption.h $(PART2_DIR)/HashTable.h
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-part1/test.o: part1/test.cpp part1/tokenizer.h part1/passwords.h part1/filemaker.h part1/encryption.h
-	$(CXX) $(CXXFLAGS) -c part1/test.cpp -o part1/test.o
+$(PART1_DIR)/%.o: $(PART1_DIR)/%.cpp $(PART1_DIR)/%.h
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-part1/tokenizer.o: part1/tokenizer.cpp part1/tokenizer.h
-	$(CXX) $(CXXFLAGS) -c part1/tokenizer.cpp -o part1/tokenizer.o
-
-part1/passwords.o: part1/passwords.cpp part1/passwords.h
-	$(CXX) $(CXXFLAGS) -c part1/passwords.cpp -o part1/passwords.o
-
-part1/filemaker.o: part1/filemaker.cpp part1/filemaker.h part1/tokenizer.h part1/passwords.h part1/encryption.h
-	$(CXX) $(CXXFLAGS) -c part1/filemaker.cpp -o part1/filemaker.o
-
-part1/encryption.o: part1/encryption.cpp part1/encryption.h
-	$(CXX) $(CXXFLAGS) -c part1/encryption.cpp -o part1/encryption.o
-
-part2/Node.o: part2/Node.cpp part2/Node.h
-	$(CXX) $(CXXFLAGS) -c part2/Node.cpp -o part2/Node.o
-
-part2/List.o: part2/List.cpp part2/List.h part2/Node.h
-	$(CXX) $(CXXFLAGS) -c part2/List.cpp -o part2/List.o
-
-part2/HashTable.o: part2/HashTable.cpp part2/HashTable.h part2/List.h part2/Node.h
-	$(CXX) $(CXXFLAGS) -c part2/HashTable.cpp -o part2/HashTable.o
+$(PART2_DIR)/%.o: $(PART2_DIR)/%.cpp $(PART2_DIR)/%.h
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f *.o part1/*.o part2/*.o $(MAIN_TARGET) $(TEST_TARGET)
+	rm -f *.o $(PART1_DIR)/*.o $(PART2_DIR)/*.o $(MAIN_TARGET) $(TEST_TARGET)
 
 rebuild: clean all
 

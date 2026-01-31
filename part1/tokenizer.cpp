@@ -1,3 +1,8 @@
+/**
+ * Tokenizes names and passwords
+ *
+ * @author Alexander Frederick
+ */
 #include "tokenizer.h"
 #include <fstream>
 #include <iostream>

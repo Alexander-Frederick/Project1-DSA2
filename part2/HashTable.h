@@ -1,3 +1,8 @@
+/**
+ * Creates Hashtable
+ *
+ * @author Alexander Frederick
+ */
 #ifndef HASHTABLE_H
 #define HASHTABLE_H
 

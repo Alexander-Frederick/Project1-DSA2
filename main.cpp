@@ -1,3 +1,8 @@
+/**
+ * Sets up the tests for project 1
+ *
+ * @author Alexander Frederick
+ */
 #include <iostream>
 #include <string>
 #include <iomanip>

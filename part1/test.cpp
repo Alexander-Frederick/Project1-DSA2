@@ -1,3 +1,8 @@
+/**
+ * Tests functions made for part 1 of project
+ *
+ * @author Alexander Frederick
+ */
 #include <iostream>
 #include <cassert>
 #include <string>

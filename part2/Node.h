@@ -1,3 +1,8 @@
+/**
+ * Basic Node class that has fields for userIDs and passwords
+ *
+ * @author Alexander Frederick
+ */
 #ifndef NODE_H
 #define NODE_H
 #include <string>

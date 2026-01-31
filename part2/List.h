@@ -1,3 +1,8 @@
+/**
+ * Creates linked list
+ *
+ * @author Alexander Frederick
+ */
 #ifndef LIST_H
 #define LIST_H
 

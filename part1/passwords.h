@@ -1,3 +1,8 @@
+/**
+ * Generates randomized passwords
+ *
+ * @author Alexander Frederick
+ */
 #ifndef PASSWORDS
 #define PASSWORDS
 #include <string>

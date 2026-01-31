@@ -1,3 +1,8 @@
+/**
+ * Create and read files 
+ *
+ * @author Alexander Frederick
+ */
 #ifndef FILEMAKER
 #define FILEMAKER
 #include <fstream>
